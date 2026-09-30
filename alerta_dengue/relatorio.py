@@ -17,7 +17,7 @@ CORES_ZONAS = {
     "epidemia": "#f4a3a3",
 }
 
-EMOJI_NIVEL = {"verde": "🟢", "amarelo": "🟡", "laranja": "🟠", "vermelho": "🔴"}
+NIVEIS = ["verde", "amarelo", "laranja", "vermelho"]
 
 
 def gerar_grafico(canal: pd.DataFrame, avaliacao: pd.DataFrame, titulo: str, caminho: Path) -> Path:
@@ -58,7 +58,7 @@ def gerar_markdown(avaliacao: pd.DataFrame, titulo: str, anos_referencia: list[i
         f"# {titulo}",
         "",
         f"**Situação na semana {atual.semana}/{atual.ano}:** "
-        f"{EMOJI_NIVEL[atual.nivel]} **{atual.nivel.upper()}** ({atual.motivo}).",
+        f"**{atual.nivel.upper()}** ({atual.motivo}).",
         "",
         f"Anos de referência do canal endêmico: {', '.join(map(str, anos_referencia))}.",
         "",
@@ -74,7 +74,7 @@ def gerar_markdown(avaliacao: pd.DataFrame, titulo: str, anos_referencia: list[i
         linhas.append(
             f"| {linha.semana} | {pd.Timestamp(linha.inicio_semana):%d/%m/%Y} | {linha.casos_estimados} "
             f"| {linha.incidencia:.2f} | {linha.zona} | {crescimento} "
-            f"| {EMOJI_NIVEL[linha.nivel]} {linha.nivel} |".replace(".", ",")
+            f"| {linha.nivel} |".replace(".", ",")
         )
 
     contagem = avaliacao["nivel"].value_counts()
@@ -82,7 +82,7 @@ def gerar_markdown(avaliacao: pd.DataFrame, titulo: str, anos_referencia: list[i
         "",
         "## Resumo do ano",
         "",
-        *[f"- {EMOJI_NIVEL[n]} {n}: {int(contagem.get(n, 0))} semana(s)" for n in EMOJI_NIVEL],
+        *[f"- {n}: {int(contagem.get(n, 0))} semana(s)" for n in NIVEIS],
         "",
         "> Os números das últimas semanas são estimativas do InfoDengue que corrigem o "
         "atraso de notificação e podem mudar nas próximas atualizações.",

@@ -1,4 +1,4 @@
-# 🦟 Alerta Dengue Recife
+# Alerta Dengue Recife
 
 [![Testes](https://github.com/gabriellapresbitero/alerta-dengue-recife/actions/workflows/testes.yml/badge.svg)](https://github.com/gabriellapresbitero/alerta-dengue-recife/actions/workflows/testes.yml)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
@@ -34,10 +34,10 @@ InfoDengue (API)  →  limpeza  →  canal endêmico  →  regras de alerta  →
 
    | Nível | Quando |
    |---|---|
-   | 🟢 verde | dentro do esperado para a época |
-   | 🟡 amarelo | acima da mediana histórica **ou** casos subindo 20%+ |
-   | 🟠 laranja | acima da mediana **e** subindo, ou primeira semana acima do Q3 |
-   | 🔴 vermelho | acima do Q3 (zona de epidemia) por 2 semanas seguidas |
+   | verde | dentro do esperado para a época |
+   | amarelo | acima da mediana histórica **ou** casos subindo 20%+ |
+   | laranja | acima da mediana **e** subindo, ou primeira semana acima do Q3 |
+   | vermelho | acima do Q3 (zona de epidemia) por 2 semanas seguidas |
 
 5. **Saídas**
    - `dengue.db`: banco **SQLite** com o histórico. Veja as consultas prontas em [`sql/consultas.sql`](sql/consultas.sql).
