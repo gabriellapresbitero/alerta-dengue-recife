@@ -70,7 +70,7 @@ def gerar_markdown(avaliacao: pd.DataFrame, titulo: str, anos_referencia: list[i
         "|---:|---|---:|---:|---|---:|---|",
     ]
     for linha in recentes.itertuples():
-        crescimento = "—" if pd.isna(linha.crescimento) else f"{linha.crescimento:+.0%}"
+        crescimento = "-" if pd.isna(linha.crescimento) else f"{linha.crescimento:+.0%}"
         linhas.append(
             f"| {linha.semana} | {pd.Timestamp(linha.inicio_semana):%d/%m/%Y} | {linha.casos_estimados} "
             f"| {linha.incidencia:.2f} | {linha.zona} | {crescimento} "
